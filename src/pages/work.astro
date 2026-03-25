@@ -5,12 +5,13 @@ import Container from "@components/Container.astro";
 import AstroLogo from "@assets/images/astro-logo-light-gradient.png";
 import { Content as SampleMarkdown } from "@content/sample-markdown.md";
 import { Image } from "astro:assets";
-import HeroText from "@components/herotext.astro";   
-
 ---
 
 <Layout title="Astro Starter">
   <Container>
-    <HeroText />  
+    <Image src={AstroLogo} alt="" />
+    <h1>a meow Astro Starter Kit</h1>
+    <SampleComponent text="This is a sample component!" />
+    <SampleMarkdown />
   </Container>
 </Layout>

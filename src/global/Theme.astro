@@ -2,24 +2,26 @@
 // we can import fonts here, after installing them via Fontsource
 // see https://fontsource.org/docs/installation for instructions
 import "@fontsource/karla";
+import '@fontsource-variable/dm-sans/wght.css';
 ---
 
 <style is:global>
   /* We can use this style tag to set up colors, fonts, etc. */
   :root {
-    --color-background: rgb(24, 0, 24);
+    --color-background: rgb(14, 14, 14);
     --color-text: rgb(240, 240, 240);
-    --color-accent: rgb(0, 200, 255);
+    --color-accent: rgb(255, 255, 255);
     --color-focus-ring: rgb(255, 0, 255);
 
-    --font-body: "Karla", sans-serif;
-    --font-headings: "Karla", sans-serif;
+    --font-body: 'DM Sans Variable', sans-serif;
+    --font-headings: "pressato-variable", sans-serif;
 
     font-size: 18px;
 
     /* These sizes are used by the Container component to set up the page container */
-    --size-page-width: 800px;
+    --size-page-width: 1400px;
     --size-page-padding: 1rem;
+    --padding: 1rem;
   }
 
   /* We can also apply these colors as a default */
@@ -35,7 +37,9 @@ import "@fontsource/karla";
   h5,
   h6 {
     color: var(--color-accent);
+    font-family: var(--font-headings);
   }
+
 
   /* default focus ring styles */
   *:focus-visible {
