@@ -1,0 +1,98 @@
+---
+interface Props {
+  rule: string;
+  description: string;
+  process: string;
+  images?: string[];
+}
+
+const { rule, description, process, images = [] } = Astro.props;
+---
+
+<article class="rule-card">
+  <header class="rule-card__header">
+    <h2 class="rule-card__title">{rule}</h2>
+  </header>
+
+  <div class="rule-card__body">
+    <section class="rule-card__section">
+      <h3 class="rule-card__label">Description</h3>
+      <p class="rule-card__text">{description}</p>
+    </section>
+
+    <section class="rule-card__section">
+      <h3 class="rule-card__label">Process</h3>
+      <p class="rule-card__text">{process}</p>
+    </section>
+
+    {images.length > 0 && (
+      <section class="rule-card__section">
+        <h3 class="rule-card__label">Images</h3>
+        <div class="rule-card__image-grid">
+          {images.map((src, i) => (
+            <img
+              src={src}
+              alt={`${rule} — image ${i + 1}`}
+              class="rule-card__image"
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</article>
+
+<style>
+  .rule-card {
+    padding-block: 3rem;
+    border-top: 1px solid var(--color-accent);
+  }
+
+  .rule-card__header {
+    margin-bottom: 2rem;
+  }
+
+  .rule-card__title {
+    font-family: var(--font-headings);
+    font-size: clamp(2rem, 6vw, 5rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .rule-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 72ch;
+  }
+
+  .rule-card__label {
+    font-family: var(--font-headings);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .rule-card__text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .rule-card__image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .rule-card__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+</style>

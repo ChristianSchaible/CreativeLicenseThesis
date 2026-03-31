@@ -1,0 +1,17 @@
+{
+  "title": "Rules of Self",
+  "rules": [
+    {
+      "rule": "Work Without Audience",
+      "description": "Make something no one will ever see. The absence of a viewer removes the performance layer and leaves only the act of making.",
+      "process": "I made a series of small drawings and immediately sealed them in an envelope. The knowledge that they were hidden changed how freely I moved.",
+      "images": ["/images/self-01a.jpg"]
+    },
+    {
+      "rule": "Follow Discomfort",
+      "description": "Whenever a creative decision causes anxiety, that is the direction to move in. Comfort signals repetition; discomfort signals new territory.",
+      "process": "I catalogued every moment I hesitated over a decision and then deliberately chose the option I had been avoiding. The results were unpredictable in productive ways.",
+      "images": ["/images/self-02a.jpg", "/images/self-02b.jpg"]
+    }
+  ]
+}

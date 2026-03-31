@@ -1,17 +1,12 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import SampleComponent from "@components/SampleComponent.astro";
 import Container from "@components/Container.astro";
-import AstroLogo from "@assets/images/astro-logo-light-gradient.png";
-import { Content as SampleMarkdown } from "@content/sample-markdown.md";
-import { Image } from "astro:assets";
+import SectionLayout from "@components/SectionLayout.astro";
+import content from "@content/work.json";
 ---
 
-<Layout title="Astro Starter">
+<Layout title={content.title}>
   <Container>
-    <Image src={AstroLogo} alt="" />
-    <h1>a meow Astro Starter Kit</h1>
-    <SampleComponent text="This is a sample component!" />
-    <SampleMarkdown />
+    <SectionLayout title={content.title} rules={content.rules} />
   </Container>
 </Layout>
