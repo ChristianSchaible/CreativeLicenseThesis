@@ -1,0 +1,204 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import content from "@content/work.json";
+
+interface Params {
+  id: string;
+}
+
+// Generate static paths for all rules
+export function getStaticPaths() {
+  return content.rules.map((rule) => ({
+    params: {
+      id: rule.rule
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-"),
+    },
+    props: {
+      rule: rule.rule,
+      description: rule.description,
+      process: rule.process,
+      images: rule.images || [],
+    },
+  }));
+}
+
+interface Props {
+  rule: string;
+  description: string;
+  process: string;
+  images: string[];
+}
+
+const { rule, description, process, images } = Astro.props;
+const slug = rule
+  .toLowerCase()
+  .replace(/[^\w\s-]/g, "")
+  .replace(/\s+/g, "-");
+const transitionName = `rule-title-work-${slug}`;
+---
+
+<Layout title={rule}>
+  <Container>
+    <article class="rule-detail">
+      <header class="rule-detail__header" transition:name={transitionName}>
+        <h1 class="rule-detail__title">"{rule}"</h1>
+      </header>
+
+      <div class="rule-detail__content">
+        <section class="rule-detail__section">
+          <h2 class="rule-detail__subtitle">Description</h2>
+          <p class="rule-detail__text">{description}</p>
+        </section>
+
+        <section class="rule-detail__section">
+          <h2 class="rule-detail__subtitle">Process</h2>
+          <p class="rule-detail__text">{process}</p>
+        </section>
+
+        {images.length > 0 && (
+          <section class="rule-detail__section rule-detail__images">
+            <h2 class="rule-detail__subtitle">Images</h2>
+            <div class="rule-detail__gallery">
+              {images.map((image) => (
+                <figure class="rule-detail__figure">
+                  <img src={image} alt={rule} class="rule-detail__img" />
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+
+      <footer class="rule-detail__footer">
+        <a href="/work" class="rule-detail__back-link">← Back to Rules of Work</a>
+      </footer>
+    </article>
+  </Container>
+</Layout>
+
+<style>
+  .rule-detail {
+    padding-block: 4rem 2rem;
+  }
+
+  .rule-detail__header {
+    margin-bottom: 3rem;
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 2rem;
+  }
+
+  .rule-detail__title {
+    font-family: var(--font-headings);
+    font-size: clamp(2.5rem, 8vw, 7rem);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .rule-detail__content {
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+
+  .rule-detail__section {
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: detail-fade-up 560ms ease-out forwards;
+  }
+
+  .rule-detail__section:nth-of-type(1) {
+    animation-delay: 80ms;
+  }
+
+  .rule-detail__section:nth-of-type(2) {
+    animation-delay: 180ms;
+  }
+
+  .rule-detail__section:nth-of-type(3) {
+    animation-delay: 280ms;
+  }
+
+  .rule-detail__subtitle {
+    font-family: var(--font-headings);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 0.75rem;
+  }
+
+  .rule-detail__text {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .rule-detail__images {
+    max-width: 100%;
+  }
+
+  .rule-detail__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .rule-detail__figure {
+    margin: 0;
+  }
+
+  .rule-detail__img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .rule-detail__footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-accent);
+    opacity: 0;
+    transform: translateY(18px);
+    animation: detail-fade-up 560ms ease-out 360ms forwards;
+  }
+
+  .rule-detail__back-link {
+    font-family: var(--font-headings);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--color-accent);
+    transition: opacity 0.3s ease;
+  }
+
+  .rule-detail__back-link:hover {
+    opacity: 0.7;
+  }
+
+  @keyframes detail-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rule-detail__section,
+    .rule-detail__footer {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

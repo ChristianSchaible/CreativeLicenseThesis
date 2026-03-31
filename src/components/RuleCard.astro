@@ -1,245 +1,57 @@
 ---
-<<<<<<< HEAD
 interface Props {
   rule: string;
   description: string;
   process: string;
   images?: string[];
+  href?: string;
+  transitionName?: string;
 }
 
-const { rule, description, process, images = [] } = Astro.props;
+const { rule, description, process, images = [], href, transitionName } = Astro.props;
+
+const ruleUrl = href || '#';
 ---
 
-<article class="rule-card">
-  <header class="rule-card__header">
-    <h2 class="rule-card__title">{rule}</h2>
-  </header>
-
-  <div class="rule-card__body">
-    <section class="rule-card__section">
-      <h3 class="rule-card__label">Description</h3>
-      <p class="rule-card__text">{description}</p>
-    </section>
-
-    <section class="rule-card__section">
-      <h3 class="rule-card__label">Process</h3>
-      <p class="rule-card__text">{process}</p>
-    </section>
-
-    {images.length > 0 && (
-      <section class="rule-card__section">
-        <h3 class="rule-card__label">Images</h3>
-        <div class="rule-card__image-grid">
-          {images.map((src, i) => (
-            <img
-              src={src}
-              alt={`${rule} — image ${i + 1}`}
-              class="rule-card__image"
-              loading="lazy"
-            />
-          ))}
-        </div>
-      </section>
-    )}
-  </div>
-=======
-// Rule Card component
-export interface Props {
-  title: string;
-  description: string;
-  process: string;
-  images: string[];
-}
-
-const { title, description, process, images } = Astro.props;
----
-
-<article class="rule-card">
-  <div class="rule-content">
-    <header class="rule-header">
-      <h2 class="rule-title">{title}</h2>
+<a href={ruleUrl} class="rule-card-link">
+  <article class="rule-card" transition:name={transitionName}>
+    <header class="rule-card__header">
+      <h2 class="rule-card__title">"{rule}"</h2>
     </header>
-
-    <div class="rule-description">
-      <p>{description}</p>
-    </div>
-
-    <div class="rule-process">
-      <h3 class="process-title">Process</h3>
-      <p>{process}</p>
-    </div>
-  </div>
-
-  {images && images.length > 0 && (
-    <div class="rule-images">
-      {images.map((image, index) => (
-        <div class="image-wrapper">
-          <img
-            src={image}
-            alt={`${title} - Image ${index + 1}`}
-            loading="lazy"
-          />
-        </div>
-      ))}
-    </div>
-  )}
->>>>>>> 4c59f53 (feat: add new components and layout for thesis, including CategorySection and RuleCard; update navigation and styles)
-</article>
+  </article>
+</a>
 
 <style>
+  .rule-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .rule-card-link:hover {
+    opacity: 0.8;
+  }
+
   .rule-card {
-<<<<<<< HEAD
-    padding-block: 3rem;
-    border-top: 1px solid var(--color-accent);
+    background-color:;
+    padding-block: 1rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: var(--margin);
+    margin-left: var(--margin);
   }
 
   .rule-card__header {
-    margin-bottom: 2rem;
-  }
+    margin: var(--margin)
+    }
 
   .rule-card__title {
     font-family: var(--font-headings);
     font-size: clamp(2rem, 6vw, 5rem);
-    line-height: 1;
+    line-height: 1.05;
     text-transform: uppercase;
     letter-spacing: -0.02em;
   }
-
-  .rule-card__body {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 72ch;
-  }
-
-  .rule-card__label {
-    font-family: var(--font-headings);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    opacity: 0.5;
-    margin-bottom: 0.5rem;
-  }
-
-  .rule-card__text {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.65;
-  }
-
-  .rule-card__image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .rule-card__image {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
-  }
 </style>
-=======
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 3rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .rule-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .rule-header {
-    margin-bottom: 0.5rem;
-  }
-
-  .rule-title {
-    font-family: var(--font-headings);
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    color: var(--color-accent);
-    font-variation-settings: "wdth" 200, "wght" 600, "slnt" 0;
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  .rule-description p,
-  .rule-process p {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--color-text);
-    margin: 0;
-  }
-
-  .process-title {
-    font-family: var(--font-headings);
-    font-size: 1.125rem;
-    color: var(--color-accent);
-    font-variation-settings: "wdth" 200, "wght" 500, "slnt" 0;
-    margin: 0 0 0.5rem 0;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.875rem;
-  }
-
-  .rule-images {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-  }
-
-  .image-wrapper {
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-
-  .image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .image-wrapper:hover img {
-    transform: scale(1.05);
-  }
-
-  /* Tablet layout */
-  @media (max-width: 1024px) {
-    .rule-card {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .rule-images {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-  }
-
-  /* Mobile layout */
-  @media (max-width: 768px) {
-    .rule-card {
-      gap: 1.5rem;
-    }
-
-    .rule-content {
-      gap: 1rem;
-    }
-
-    .rule-images {
-      grid-template-columns: 1fr;
-    }
-
-    .image-wrapper {
-      aspect-ratio: 3/2;
-    }
-  }
-</style>
->>>>>>> 4c59f53 (feat: add new components and layout for thesis, including CategorySection and RuleCard; update navigation and styles)

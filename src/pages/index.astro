@@ -1,15 +1,14 @@
 ---
 import Layout from "@layouts/Layoutsidenav.astro";
 import Container from "@components/Container.astro";
-import HeroText from "@components/herotext.astro";
 import SideNav from "@components/sidenav.astro";
 ---
 
 <Layout title="Astro Starter">
   <div class="home">
     <div class="video-container">
-      <video id="myVideo">
-        <source src="/process.mp4" type="video/mp4">
+      <video muted autoplay loop="myVideo">
+        <source src="creative-license.mp4" type="video/mp4">
         Your browser does not support the video tag.
 
       </video>
@@ -66,10 +65,19 @@ import SideNav from "@components/sidenav.astro";
         margin: var(--margin);
         border-radius: 5px;
         mix-blend-mode: exclusion;
+        transition: all 0.5s ease;
+        background: rgb(34, 0, 255);
+        color: rgb(255, 255, 255);
+    }
+    .hero:hover {
+      transition: all 0.5s ease;
+
+    }
         
 
   .hero-text {
     font-size: 3rem;
+    color: rgb(255, 255, 255);
     ;
   }
     .herodescription {

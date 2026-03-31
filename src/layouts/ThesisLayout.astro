@@ -5,6 +5,7 @@ import SkipLink from "@components/SkipLink.astro";
 import CSSReset from "../global/CSSReset.astro";
 import Theme from "../global/Theme.astro";
 import ThesisStyles from "../global/ThesisStyles.astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <head>
@@ -16,6 +17,7 @@ import ThesisStyles from "../global/ThesisStyles.astro";
   <CSSReset />
   <Theme />
   <ThesisStyles />
+  <ClientRouter />
 </head>
 
 <body>

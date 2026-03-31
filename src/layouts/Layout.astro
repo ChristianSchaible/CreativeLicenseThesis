@@ -4,6 +4,7 @@ import SkipLink from "@components/SkipLink.astro";
 import Nav from "@components/nav.astro";
 import CSSReset from "../global/CSSReset.astro";
 import Theme from "../global/Theme.astro";
+import { ClientRouter } from "astro:transitions";
 
 // This file creates the basic HTML page structure and sets up our CSS reset and theme. We will use this Layout component in all of our pages.
 ---
@@ -14,8 +15,9 @@ import Theme from "../global/Theme.astro";
   <meta name="viewport" content="width=device-width" />
   <title>{title}</title>
   <link rel="stylesheet" href="https://use.typekit.net/sva7bmh.css">
-  <CSSReset />
+  <CSSReset />                  
   <Theme />
+<ClientRouter />
 </head>
 <body>
   <SkipLink />

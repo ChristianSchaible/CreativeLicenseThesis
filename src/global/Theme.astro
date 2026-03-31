@@ -31,6 +31,42 @@ import '@fontsource-variable/dm-sans/wght.css';
     color: var(--color-text);
     font-family: var(--font-body);
   }
+
+  /* Shared-element only transitions: disable global page animation */
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  ::view-transition-old(site-nav),
+  ::view-transition-new(site-nav) {
+    animation: none;
+  }
+
+  /* Prevent shared-element transitions from clipping while moving/scaling */
+  ::view-transition-group(*) {
+    overflow: visible;
+  }
+
+  ::view-transition-image-pair(*) {
+    overflow: visible;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    overflow: visible;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+    }
+  }
+
   h1,
   h2,
   h3,

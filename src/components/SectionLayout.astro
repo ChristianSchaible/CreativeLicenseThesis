@@ -11,50 +11,135 @@ interface Rule {
 interface Props {
   title: string;
   rules: Rule[];
+  section?: string;
+  description?: string;
 }
 
-const { title, rules } = Astro.props;
+const { title, rules, section = 'license', description } = Astro.props;
 ---
 
 <section class="section-layout">
   <header class="section-layout__header">
     <h1 class="section-layout__title">{title}</h1>
+    {description && (
+      <p class="section-layout__description">{description}</p>
+    )}
   </header>
-
-  <div class="section-layout__rules">
-    {rules.map((rule) => (
-      <RuleCard
-        rule={rule.rule}
-        description={rule.description}
-        process={rule.process}
-        images={rule.images}
-      />
-    ))}
+<div class="rulesection">
+<h1 class="section-layout__subtitle">Input</h1>
+<div class="section-layout__rules">
+    {rules.map((rule) => {
+      const slug = rule.rule
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-");
+      const transitionName = `rule-title-${section}-${slug}`;
+      return (
+        <RuleCard
+          rule={rule.rule}
+          description={rule.description}
+          process={rule.process}
+          images={rule.images}
+          href={`/${section}/${slug}`}
+          transitionName={transitionName}
+        />
+      );
+    })}
   </div>
+
+
+</div>
+  
 </section>
 
 <style>
   .section-layout {
     width: 100%;
-    padding-block: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-block: 4rem;
   }
 
   .section-layout__header {
-    margin-bottom: 4rem;
-    border-bottom: 3px solid var(--color-accent);
+    margin: var(--margin);
+    width: fit-content;
     padding-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: section-fade-up 560ms ease-out 80ms forwards;
   }
 
   .section-layout__title {
     font-family: var(--font-headings);
-    font-size: clamp(2.5rem, 8vw, 7rem);
+    font-size: 2rem;
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .rulesection {
+ display: flex;
+  }
+  .section-layout__subtitle {
+    font-family: var(--font-headings);
+    font-size: 10rem;
+     writing-mode: vertical-rl;   /* makes text vertical */
+  transform: rotate(180deg);   /* flips it to read top-down */
+  text-orientation: mixed;
+  text-align: right;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    background-color: blue;
+     padding: 16px 8px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: white;
+    opacity: 0;
+    animation: section-fade-up-rotated 560ms ease-out 180ms forwards;
+  }
+
+  .section-layout__description {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.6;
+    margin: 0;
   }
 
   .section-layout__rules {
     display: flex;
     flex-direction: column;
+  }
+
+  @keyframes section-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes section-fade-up-rotated {
+    from {
+      opacity: 0;
+      transform: rotate(180deg) translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(180deg) translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-layout__header,
+    .section-layout__subtitle {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 </style>
