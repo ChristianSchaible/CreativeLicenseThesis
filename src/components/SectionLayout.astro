@@ -1,0 +1,60 @@
+---
+import RuleCard from "@components/RuleCard.astro";
+
+interface Rule {
+  rule: string;
+  description: string;
+  process: string;
+  images?: string[];
+}
+
+interface Props {
+  title: string;
+  rules: Rule[];
+}
+
+const { title, rules } = Astro.props;
+---
+
+<section class="section-layout">
+  <header class="section-layout__header">
+    <h1 class="section-layout__title">{title}</h1>
+  </header>
+
+  <div class="section-layout__rules">
+    {rules.map((rule) => (
+      <RuleCard
+        rule={rule.rule}
+        description={rule.description}
+        process={rule.process}
+        images={rule.images}
+      />
+    ))}
+  </div>
+</section>
+
+<style>
+  .section-layout {
+    width: 100%;
+    padding-block: 4rem;
+  }
+
+  .section-layout__header {
+    margin-bottom: 4rem;
+    border-bottom: 3px solid var(--color-accent);
+    padding-bottom: 1.5rem;
+  }
+
+  .section-layout__title {
+    font-family: var(--font-headings);
+    font-size: clamp(2.5rem, 8vw, 7rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+  }
+
+  .section-layout__rules {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
