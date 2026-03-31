@@ -1,0 +1,36 @@
+---
+import type { Rule } from "../types";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import SectionLayout from "@components/SectionLayout.astro";
+
+export async function getStaticPaths() {
+  const contentFiles = import.meta.glob<{ title: string; rules: Rule[] }>(
+    "../content/*.json",
+    { eager: false }
+  );
+  return await Promise.all(
+    Object.entries(contentFiles).map(async ([path, load]) => {
+      const section = path.replace("../content/", "").replace(".json", "");
+      const content = await load();
+      return {
+        params: { section },
+        props: { title: content.title, rules: content.rules },
+      };
+    })
+  );
+}
+
+interface Props {
+  title: string;
+  rules: Rule[];
+}
+
+const { title, rules } = Astro.props;
+---
+
+<Layout title={title}>
+  <Container>
+    <SectionLayout title={title} rules={rules} />
+  </Container>
+</Layout>

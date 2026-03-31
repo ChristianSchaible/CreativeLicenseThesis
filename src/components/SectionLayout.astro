@@ -1,12 +1,6 @@
 ---
+import type { Rule } from "../types";
 import RuleCard from "@components/RuleCard.astro";
-
-interface Rule {
-  rule: string;
-  description: string;
-  process: string;
-  images?: string[];
-}
 
 interface Props {
   title: string;
@@ -23,12 +17,7 @@ const { title, rules } = Astro.props;
 
   <div class="section-layout__rules">
     {rules.map((rule) => (
-      <RuleCard
-        rule={rule.rule}
-        description={rule.description}
-        process={rule.process}
-        images={rule.images}
-      />
+      <RuleCard {...rule} />
     ))}
   </div>
 </section>

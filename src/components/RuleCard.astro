@@ -1,10 +1,7 @@
 ---
-interface Props {
-  rule: string;
-  description: string;
-  process: string;
-  images?: string[];
-}
+import type { Rule } from "../types";
+
+type Props = Rule;
 
 const { rule, description, process, images = [] } = Astro.props;
 ---
