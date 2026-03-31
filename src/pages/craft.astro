@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import SectionLayout from "@components/SectionLayout.astro";
@@ -10,3 +11,20 @@ import content from "@content/craft.json";
     <SectionLayout title={content.title} rules={content.rules} />
   </Container>
 </Layout>
+=======
+import Layout from "@layouts/Layoutsidenav.astro";
+import SampleComponent from "@components/SampleComponent.astro";
+import Container from "@components/Container.astro";
+import AstroLogo from "@assets/images/astro-logo-light-gradient.png";
+import { Content as SampleMarkdown } from "@content/sample-markdown.md";
+import { Image } from "astro:assets";
+import HeroText from "@components/herotext.astro";   
+
+---
+
+<Layout title="Astro Starter">
+  <Container>
+    <HeroText />  
+  </Container>
+</Layout>
+>>>>>>> 4c59f53 (feat: add new components and layout for thesis, including CategorySection and RuleCard; update navigation and styles)

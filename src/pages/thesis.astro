@@ -1,0 +1,70 @@
+---
+// Example thesis page using the new components
+import ThesisLayout from "@layouts/ThesisLayout.astro";
+import CategorySection from "@components/CategorySection.astro";
+
+// Sample data - replace with your actual content
+const workRules = [
+  {
+    title: "Define Your Domain",
+    description: "Establish clear boundaries for your creative work. Know what you do and what you don't do.",
+    process: "Start by listing all the skills and activities you enjoy. Then identify the intersection of what you're good at, what the world needs, and what you can be paid for.",
+    images: ["/images/work-1.jpg", "/images/work-2.jpg"]
+  },
+  {
+    title: "Set Creative Hours",
+    description: "Protect your creative time like a business meeting. Block it in your calendar and honor it.",
+    process: "Choose specific hours each day or week dedicated solely to creative work. Communicate these boundaries to others and treat them as non-negotiable.",
+    images: ["/images/work-3.jpg"]
+  }
+];
+
+const selfRules = [
+  {
+    title: "Practice Daily Reflection",
+    description: "End each day with intentional reflection on your creative process and decisions.",
+    process: "Spend 10-15 minutes writing about what worked, what didn't, and what you'll try differently tomorrow.",
+    images: ["/images/self-1.jpg", "/images/self-2.jpg", "/images/self-3.jpg"]
+  }
+];
+
+const craftRules = [
+  {
+    title: "Master Your Tools",
+    description: "Develop deep familiarity with your creative tools through deliberate practice.",
+    process: "Spend time each week exploring advanced features, experimenting with techniques, and pushing the boundaries of your tools.",
+    images: ["/images/craft-1.jpg", "/images/craft-2.jpg"]
+  }
+];
+---
+
+<ThesisLayout title="Creative License - Thesis">
+  <!-- Intro Section -->
+  <section class="category-section" data-section="intro" id="intro">
+    <div class="category-container">
+      <div class="thesis-intro">
+        <h1>Creative License</h1>
+        <p>A system for sustainable creative work. These rules form the foundation of a creative practice that lasts a lifetime, not just a season.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <CategorySection
+    title="Rules of Work"
+    sectionId="work"
+    rules={workRules}
+  />
+
+  <CategorySection
+    title="Rules of Self"
+    sectionId="self"
+    rules={selfRules}
+  />
+
+  <CategorySection
+    title="Rules of Craft"
+    sectionId="craft"
+    rules={craftRules}
+  />
+</ThesisLayout>
