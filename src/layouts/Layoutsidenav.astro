@@ -1,6 +1,7 @@
 ---
 const { title } = Astro.props;
 import SkipLink from "@components/SkipLink.astro";
+import MagneticCursor from "@components/MagneticCursor.astro";
 import CSSReset from "../global/CSSReset.astro";
 import Theme from "../global/Theme.astro";
 import { ClientRouter } from "astro:transitions";
@@ -27,6 +28,7 @@ import { ClientRouter } from "astro:transitions";
   <main id="main-content">
     <slot />
   </main>
+  <MagneticCursor />
   <!--
   if you are going to use a footer, it should go here
    -->

@@ -29,18 +29,24 @@ const ruleUrl = href || '#';
     transition: opacity 0.3s ease;
   }
 
-  .rule-card-link:hover {
-    opacity: 0.8;
-  }
-
   .rule-card {
-    background-color:;
+    background-color: var(--color-background);
     padding-block: 1rem;
     border: 1px solid var(--color-accent);
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: var(--margin);
     margin-left: var(--margin);
+    font-variation-settings: "wght" 200, "wdth" 100, "slnt" 0;
+
+  }
+  .rule-card:hover {
+    transition: all 0.3s ease-in-out;
+    scale: 1.01;
+    box-shadow:  0px 14px 84px 0px rgba(0, 0, 255, 1);
+    font-variation-settings: "wght" 700, "wdth" 110, "slnt" 0;
+
+
   }
 
   .rule-card__header {
