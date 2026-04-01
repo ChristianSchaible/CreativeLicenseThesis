@@ -4,18 +4,24 @@
   "rules": [
     {
       "rule": "Material First",
+      "author": "Christian Schaible",
+      "visualizedBy": "Christian Schaible",
       "description": "The properties of a material dictate the form. Do not impose a predetermined shape onto a medium — let resistance and behaviour guide the outcome.",
       "process": "I chose wet paper and let the ink bleed before placing any intentional mark. The spread of the ink set the boundaries of every subsequent decision.",
       "images": ["/images/craft-01a.jpg", "/images/craft-01b.jpg"]
     },
     {
       "rule": "Error Is Data",
+      "author": "Christian Schaible",
+      "visualizedBy": "Christian Schaible",
       "description": "Mistakes are not failures to be corrected — they are information about the gap between intention and execution. Document them.",
       "process": "I kept every misprint, miscut, and misalignment. Laid side by side, the errors formed a more honest record of the process than the finished pieces did.",
       "images": ["/images/craft-02a.jpg"]
     },
     {
       "rule": "Use What Is Present",
+      "author": "Christian Schaible",
+      "visualizedBy": "Christian Schaible",
       "description": "Work only with tools and materials that are physically in the room at the time of making. Sourcing is a form of procrastination.",
       "process": "I emptied my bag onto the table and made a piece using only those objects. The arbitrariness of the inventory became the concept.",
       "images": ["/images/craft-03a.jpg", "/images/craft-03b.jpg"]

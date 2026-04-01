@@ -4,18 +4,24 @@
   "rules": [
     {
       "rule": "Constraints Create Constraints CreateConstraints CreateConstraints CreateConstraints Create",
+      "author": "Christian Schaible",
+      "visualizedBy": "Christian Schaible",
       "description": "Every project begins with a rule that limits what you are allowed to do. The restriction is the starting point, not the obstacle.",
       "process": "I gave myself exactly one typeface, one colour, and one hour per piece. The scarcity forced decisions that I would otherwise defer indefinitely.",
       "images": ["/images/work-01a.jpg", "/images/work-01b.jpg"]
     },
     {
       "rule": "Finish Before Judging",
+      "author": "Christian Schaible",
+      "visualizedBy": "Christian Schaible",
       "description": "No work may be evaluated until it is fully complete. Critique during production collapses the space between making and meaning.",
       "process": "I covered the screen after each session and only reviewed the accumulated output at the end of the week. The distance changed what I saw.",
       "images": ["/images/work-02a.jpg"]
     },
     {
       "rule": "Repeat Until Broken",
+      "author": "Christian Schaible",
+      "visualizedBy": "Christian Schaible",
       "description": "A process is repeated verbatim until it produces a result that contradicts its own premise. That contradiction is the work.",
       "process": "I printed the same layout forty times, changing nothing. By iteration thirty-two the ink registration had drifted enough to make every copy unique.",
       "images": ["/images/work-03a.jpg", "/images/work-03b.jpg", "/images/work-03c.jpg"]
