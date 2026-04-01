@@ -43,20 +43,21 @@ const isActive = (href: string) => {
     background-color: var(--color-background);
     border-bottom: 1px solid var(--color-accent);
     z-index: 1000;
+    font-size: 1.1rem;
   }
 
   .nav-container {
     max-width: var(--size-page-width);
-    margin: 0 auto;
+    margin: 0;
     padding: 0 var(--size-page-padding);
     display: flex;;
     align-items: center;
+    justify-content:baseline;
     height: 60px;
   }
 
   .nav-brand {
     font-family: var(--font-headings);
-    font-size: 1.5rem;
     color: var(--color-accent);
     text-decoration: none;
   }
@@ -103,7 +104,6 @@ const isActive = (href: string) => {
     text-decoration: none;
     font-family: var(--font-headings);
     font-variation-settings: "wdth" 200, "wght" 400, "slnt" 0;
-    font-size: 1.25rem;
   }
 
   .nav-menu a:hover,
