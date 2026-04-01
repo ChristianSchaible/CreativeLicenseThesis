@@ -194,7 +194,13 @@ const descriptionColumns = (() => {
     font-size: 10rem;
      writing-mode: vertical-rl;   /* makes text vertical */
   transform: rotate(180deg);   /* flips it to read top-down */
-  font-variation-settings: "wght" 700, "wdth" 75;
+  --subtitle-wdth-max: 75;
+  --subtitle-wdth-min: 250;
+  --subtitle-wdth: calc(
+    var(--subtitle-wdth-max) -
+    (var(--subtitle-wdth-max) - var(--subtitle-wdth-min)) * var(--subtitle-shrink-progress, 0)
+  );
+  font-variation-settings: "wght" var(--subtitle-wdth), "wdth" var(--subtitle-wdth);
   text-orientation: mixed;
   text-align: right;
     line-height: 1.2;
@@ -208,6 +214,8 @@ const descriptionColumns = (() => {
     animation: section-fade-up-rotated 560ms ease-out 180ms forwards;
     height: fit-content;
     position: sticky;
+    top: 4rem;
+    margin-left: var(--margin);
 
   }
 
@@ -218,6 +226,7 @@ const descriptionColumns = (() => {
     align-items: start;
     color: rgb(163, 163, 163);
     height: fit-content;
+    margin-right: 2rem;
   }
 
   .section-layout__description-column {
@@ -317,6 +326,12 @@ const descriptionColumns = (() => {
 </style>
 
 <script define:vars={{ palette }}>
+  const setSubtitleShrinkFromScroll = () => {
+    const maxDistance = 420;
+    const progress = Math.min(window.scrollY / maxDistance, 1);
+    document.documentElement.style.setProperty("--subtitle-shrink-progress", progress.toFixed(3));
+  };
+
   const applyPalette = () => {
     const body = document.body;
     body.style.setProperty("--grad-base-a", palette.baseA);
@@ -334,7 +349,10 @@ const descriptionColumns = (() => {
   };
 
   applyPalette();
+  setSubtitleShrinkFromScroll();
   document.addEventListener("astro:page-load", applyPalette);
+  document.addEventListener("astro:page-load", setSubtitleShrinkFromScroll);
+  window.addEventListener("scroll", setSubtitleShrinkFromScroll, { passive: true });
 
   document.body.addEventListener("pointermove", (e) => {
     const el = e.currentTarget;
