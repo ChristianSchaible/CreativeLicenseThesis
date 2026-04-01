@@ -89,9 +89,7 @@ const { title, rules, section = 'license', description } = Astro.props;
   text-orientation: mixed;
   text-align: right;
     line-height: 1.2;
-    text-transform: uppercase;
     letter-spacing: -0.02em;
-    margin-bottom: 2rem;
     background-color: blue;
      padding: 16px 8px;
     border: 1px solid #fff;
@@ -99,6 +97,9 @@ const { title, rules, section = 'license', description } = Astro.props;
     color: white;
     opacity: 0;
     animation: section-fade-up-rotated 560ms ease-out 180ms forwards;
+    height: fit-content;
+    position: sticky;
+
   }
 
   .section-layout__description {

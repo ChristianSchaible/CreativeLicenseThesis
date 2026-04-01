@@ -2,11 +2,9 @@
 // Thesis Layout with sticky side navigation
 const { title } = Astro.props;
 import SkipLink from "@components/SkipLink.astro";
-import MagneticCursor from "@components/MagneticCursor.astro";
 import CSSReset from "../global/CSSReset.astro";
 import Theme from "../global/Theme.astro";
 import ThesisStyles from "../global/ThesisStyles.astro";
-import { ClientRouter } from "astro:transitions";
 ---
 
 <head>
@@ -18,7 +16,6 @@ import { ClientRouter } from "astro:transitions";
   <CSSReset />
   <Theme />
   <ThesisStyles />
-  <ClientRouter />
 </head>
 
 <body>
@@ -75,8 +72,6 @@ import { ClientRouter } from "astro:transitions";
       });
     });
   </script>
-
-  <MagneticCursor />
 </body>
 
 <style>

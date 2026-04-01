@@ -46,8 +46,9 @@ const transitionName = `rule-title-craft-${slug}`;
       <header class="rule-detail__header" transition:name={transitionName}>
         <h1 class="rule-detail__title">"{rule}"</h1>
       </header>
-
-      <div class="rule-detail__content">
+      <div class="output">
+        <h1 class="section-layout__subtitle">Output</h1>
+        <div class="rule-detail__content">
         <section class="rule-detail__section">
           <h2 class="rule-detail__subtitle">Description</h2>
           <p class="rule-detail__text">{description}</p>
@@ -71,6 +72,8 @@ const transitionName = `rule-title-craft-${slug}`;
           </section>
         )}
       </div>
+      </div>
+      
 
       <footer class="rule-detail__footer">
         <a href="/craft" class="rule-detail__back-link">← Back to Rules of Craft</a>
@@ -80,15 +83,14 @@ const transitionName = `rule-title-craft-${slug}`;
 </Layout>
 
 <style>
+
   .rule-detail {
-    padding-block: 4rem 2rem;
   }
 
   .rule-detail__header {
-    margin-bottom: 3rem;
-    border-bottom: 3px solid var(--color-accent);
-    padding-bottom: 2rem;
-  }
+    margin: var(--margin);
+    
+    }
 
   .rule-detail__title {
     font-family: var(--font-headings);
@@ -96,16 +98,17 @@ const transitionName = `rule-title-craft-${slug}`;
     line-height: 1.2;
     text-transform: uppercase;
     letter-spacing: -0.02em;
-    margin-bottom: 1rem;
+    margin: var(--margin);
   }
 
   .rule-detail__content {
     max-width: 65ch;
-    margin: 0 auto;
+    margin: var(--margin);
+    display: flex;
+    flex-direction: column;
   }
 
   .rule-detail__section {
-    margin-bottom: 4rem;
     opacity: 0;
     transform: translateY(18px);
     animation: detail-fade-up 560ms ease-out forwards;
@@ -181,6 +184,34 @@ const transitionName = `rule-title-craft-${slug}`;
   .rule-detail__back-link:hover {
     opacity: 0.7;
   }
+  .output {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .section-layout__subtitle {
+    font-family: var(--font-headings);
+    font-size: 10rem;
+    writing-mode: vertical-rl;   /* makes text vertical */
+    transform: rotate(180deg);   /* flips it to read top-down */
+    text-orientation: mixed;
+    text-align: right;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    background-color: blue;
+    padding: 16px 8px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: white;
+    opacity: 0;
+    animation: section-fade-up-rotated 560ms ease-out 180ms forwards;
+    height: fit-content;
+    margin: 0;
+ font-variation-settings: "wght" 900, "wdth" 150, "slnt" 0;
+      position: sticky;
+     top: 2rem;
+  }
 
   @keyframes detail-fade-up {
     from {
@@ -193,12 +224,32 @@ const transitionName = `rule-title-craft-${slug}`;
     }
   }
 
+  @keyframes section-fade-up-rotated {
+    from {
+      opacity: 0;
+      transform: rotate(180deg) translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: rotate(180deg) translateY(0);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .rule-detail__section,
-    .rule-detail__footer {
+    .rule-detail__footer,
+    .section-layout__subtitle {
       animation: none;
       opacity: 1;
+    }
+
+    .rule-detail__section,
+    .rule-detail__footer {
       transform: none;
+    }
+
+    .section-layout__subtitle {
+      transform: rotate(180deg);
     }
   }
 </style>
